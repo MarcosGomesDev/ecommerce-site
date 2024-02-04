@@ -4,7 +4,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Image from "next/legacy/image";
 import { ProductQuantityForm } from "./components";
-import { ProductService } from "@/services";
+import { ProductService } from "@/services/product.service";
 
 export default async function ProductDetailPage({
   params,

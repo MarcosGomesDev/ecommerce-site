@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import { Product } from "@/@models";
 import { Total } from "@/components";
+import { addToCartAction } from "@/server-actions";
 
 const schema = yup
   .object({
@@ -39,7 +40,7 @@ export function ProductQuantityForm(props: { product: Product }) {
   }, [watch, product, getValues]);
 
   return (
-    <Box component="form" sx={{ p: 1 }}>
+    <Box component="form" sx={{ p: 1 }} action={addToCartAction}>
       <Box
         sx={{
           display: "flex",

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SelectCategory } from "../SelectCategory";
 import { UserMenu } from "../UserMenu";
-import { CategoryService } from "@/services";
+import { CategoryService } from "@/services/category.service";
 
 export async function Navbar() {
   const categories = await new CategoryService().getCategories();
