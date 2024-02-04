@@ -6,8 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { SelectCategory } from "../SelectCategory";
 import { UserMenu } from "../UserMenu";
+import { CategoryService } from "@/services";
 
 export async function Navbar() {
+  const categories = await new CategoryService().getCategories();
+
   return (
     <AppBar position="fixed">
       <Toolbar sx={{ backgroundColor: "background.paper" }}>
@@ -36,7 +39,7 @@ export async function Navbar() {
           p: 1,
         }}
       >
-        <SelectCategory categories={[]} />
+        <SelectCategory categories={categories} />
         <Box
           component={Link}
           href={"/produtos"}
