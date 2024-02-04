@@ -102,7 +102,7 @@ export default async function MyCartPage() {
                 Finalizar compra
               </Button>
             ) : (
-              <Button LinkComponent={Link} href="/products">
+              <Button LinkComponent={Link} href="/produtos">
                 Continuar comprando
               </Button>
             )}
