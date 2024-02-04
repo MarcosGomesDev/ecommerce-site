@@ -3,23 +3,16 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Image from "next/legacy/image";
-import { Product } from "@/@models";
 import { ProductQuantityForm } from "./components";
-
-const product: Product = {
-  id: "1",
-  name: "Produto 1",
-  description: "Descrição do produto 1",
-  price: 100,
-  image_url: "https://source.unsplash.com/random?product",
-  category_id: "1",
-};
+import { ProductService } from "@/services";
 
 export default async function ProductDetailPage({
   params,
 }: {
   params: { productId: string };
 }) {
+  const product = await new ProductService().getProduct(params.productId);
+
   return (
     <Grid2 container spacing={2}>
       <Grid2
