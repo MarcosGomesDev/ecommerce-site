@@ -9,7 +9,8 @@ import {
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { Order, OrderStatus } from "@/@models";
-import { Total } from "@/components";
+import { Total } from "@/components/Total";
+import { OrderServiceFactory } from "@/services/order.service";
 
 const order: Order = {
   id: "1",
@@ -51,6 +52,8 @@ export default async function MyOrderDetail({
 }: {
   params: { orderId: string };
 }) {
+  const order = await OrderServiceFactory.create().getOrder(params.orderId);
+
   return (
     <Box>
       <Grid2 container spacing={2}>

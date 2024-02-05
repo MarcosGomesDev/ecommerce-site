@@ -7,9 +7,12 @@ import Image from "next/image";
 import { SelectCategory } from "../SelectCategory";
 import { UserMenu } from "../UserMenu";
 import { CategoryService } from "@/services/category.service";
+import { AuthService } from "@/services/auth.service";
 
 export async function Navbar() {
   const categories = await new CategoryService().getCategories();
+
+  const user = new AuthService().getUser();
 
   return (
     <AppBar position="fixed">
@@ -26,10 +29,10 @@ export async function Navbar() {
         >
           <SearchBar />
         </Box>
-        <IconButton LinkComponent={Link} size="large" href="/my-cart">
+        <IconButton LinkComponent={Link} size="large" href="/meu-carrinho">
           <ShoppingCartIcon />
         </IconButton>
-        <UserMenu user={{}} />
+        <UserMenu user={user} />
       </Toolbar>
       <Toolbar
         sx={{

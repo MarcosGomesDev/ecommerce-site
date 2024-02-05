@@ -1,4 +1,5 @@
 import { Order, OrderStatus } from "@/@models";
+import { OrderServiceFactory } from "@/services/order.service";
 import {
   Box,
   Button,
@@ -11,44 +12,9 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-const orders: Order[] = [
-  {
-    id: "1",
-    status: OrderStatus.PENDING,
-    created_at: new Date().toISOString(),
-    items: [
-      {
-        id: 1,
-        product: {
-          id: "1",
-          name: "Produto 1",
-          description: "Descrição do produto 1",
-          price: 100,
-          image_url: "https://source.unsplash.com/random?product",
-          category_id: "1",
-        },
-        quantity: 1,
-        price: 100,
-      },
-      {
-        id: 2,
-        product: {
-          id: "2",
-          name: "Produto 2",
-          description: "Descrição do produto 2",
-          price: 100,
-          image_url: "https://source.unsplash.com/random?product",
-          category_id: "1",
-        },
-        quantity: 4,
-        price: 100,
-      },
-    ],
-    total: 500,
-  },
-];
-
 export default async function MyOrdersListPage() {
+  const orders = await OrderServiceFactory.create().getOrders();
+
   return (
     <Box>
       <Typography variant="h4">Meus pedidos</Typography>

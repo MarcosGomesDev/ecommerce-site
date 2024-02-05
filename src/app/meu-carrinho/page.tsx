@@ -14,10 +14,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "next/link";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import React from "react";
-import { Total } from "@/components";
 import { CartServiceFactory } from "@/services/cart.service";
 import { ProductService } from "@/services/product.service";
-import { removeItemFromCartAction } from "@/server-actions";
+import { removeItemFromCartAction } from "@/server-actions/cart.action";
+import { Total } from "@/components/Total";
 
 export default async function MyCartPage() {
   const cart = CartServiceFactory.create().getCart();

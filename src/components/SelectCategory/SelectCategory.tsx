@@ -1,7 +1,7 @@
 "use client";
 
 import { Category } from "@/@models";
-import { searchProducts } from "@/utils";
+import { searchProducts } from "@/utils/searchProducts";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useRouter, useSearchParams } from "next/navigation";

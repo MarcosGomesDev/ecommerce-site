@@ -10,45 +10,19 @@ import {
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { redirect } from "next/navigation";
-import { Total } from "@/components";
-import { CheckoutForm } from "./components";
-
-const products = [
-  {
-    id: "1",
-    name: "Produto 1",
-    description: "Descrição do produto 1",
-    price: 100,
-    image_url: "https://source.unsplash.com/random?product",
-    category_id: "1",
-  },
-  {
-    id: "2",
-    name: "Produto 2",
-    description: "Descrição do produto 2",
-    price: 100,
-    image_url: "https://source.unsplash.com/random?product",
-    category_id: "1",
-  },
-  {
-    id: "3",
-    name: "Produto 3",
-    description: "Descrição do produto 3",
-    price: 100,
-    image_url: "https://source.unsplash.com/random?product",
-    category_id: "1",
-  },
-];
-
-const cart = {
-  items: [
-    { product_id: "1", quantity: 1, total: 100 },
-    { product_id: "2", quantity: 2, total: 200 },
-  ],
-  total: 300,
-};
+import { Total } from "@/components/Total";
+import { CartServiceFactory } from "@/services/cart.service";
+import { ProductService } from "@/services/product.service";
+import { CheckoutForm } from "./CheckoutForm";
 
 async function CheckoutPage() {
+  const cart = CartServiceFactory.create().getCart();
+  const productService = new ProductService();
+
+  const products = await productService.getProductsByIds(
+    cart.items.map((item) => item.product_id)
+  );
+
   if (cart.items.length === 0) {
     return redirect("/meu-carrinho");
   }

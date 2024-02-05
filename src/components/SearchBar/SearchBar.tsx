@@ -4,7 +4,7 @@ import { InputBase, styled } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter, useSearchParams } from "next/navigation";
-import { searchProducts } from "@/utils";
+import { searchProducts } from "@/utils/searchProducts";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

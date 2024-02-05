@@ -18,10 +18,8 @@ export class ProductService {
       next: {
         revalidate: 1,
       },
-    });
-
+    }); //revalidate on demand
     let data = await response.json();
-
     data = !data ? [] : data;
     if (search) {
       return data.filter((product: Product) => {
@@ -34,8 +32,8 @@ export class ProductService {
 
   async getProductsByIds(productIds: string[]): Promise<Product[]> {
     const responses = await Promise.all(
-      productIds.map((producId) =>
-        fetch(`${process.env.CATALOG_API_URL}/product/${producId}`, {
+      productIds.map((productId) =>
+        fetch(`${process.env.CATALOG_API_URL}/product/${productId}`, {
           next: {
             revalidate: 1,
           },
@@ -54,8 +52,7 @@ export class ProductService {
           revalidate: 1,
         },
       }
-    );
-
+    ); //revalidate on demand
     return response.json();
   }
 }

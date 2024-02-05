@@ -3,10 +3,10 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Image from "next/legacy/image";
-import { ProductQuantityForm } from "./components";
-import { ProductService } from "@/services/product.service";
+import { ProductService } from "../../../services/product.service";
+import { ProductQuantityForm } from "./ProductQuantityForm";
 
-export default async function ProductDetailPage({
+async function ProductDetailPage({
   params,
 }: {
   params: { productId: string };
@@ -68,3 +68,5 @@ export default async function ProductDetailPage({
     </Grid2>
   );
 }
+
+export default ProductDetailPage;

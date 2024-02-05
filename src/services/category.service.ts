@@ -1,4 +1,4 @@
-import { Category, Product } from "@/@models";
+import { Category } from "@/@models";
 
 export class CategoryService {
   async getCategories(): Promise<Category[]> {
@@ -6,8 +6,7 @@ export class CategoryService {
       next: {
         revalidate: 1,
       },
-    });
-
+    }); //revalidate on demand
     return response.json();
   }
 }

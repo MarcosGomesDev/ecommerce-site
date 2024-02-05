@@ -1,6 +1,6 @@
 "use server";
 
-import { CartServiceFactory } from "@/services/cart.service";
+import { CartServiceFactory } from "../services/cart.service";
 import { redirect } from "next/navigation";
 
 export type CartItem = {
@@ -14,19 +14,21 @@ export type Cart = {
   total: number;
 };
 
+//product_id
+//quantity
 export async function addToCartAction(formData: FormData) {
   const cartService = CartServiceFactory.create();
   await cartService.addToCart({
     product_id: formData.get("product_id") as string,
     quantity: parseInt(formData.get("quantity") as string),
   });
-
   redirect("/meu-carrinho");
 }
 
 export async function removeItemFromCartAction(formData: FormData) {
   const cartService = CartServiceFactory.create();
   const index = parseInt(formData.get("index") as string);
-
-  await cartService.removeItemFromCart(index);
+  cartService.removeItemFromCart(index);
 }
+
+//mutations
